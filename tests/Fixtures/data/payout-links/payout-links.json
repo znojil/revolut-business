@@ -1,0 +1,33 @@
+[
+	{
+		"id": "12dcd8c2-6408-458f-98a9-3f4abc180898",
+		"state": "processed",
+		"created_at": "2023-07-11T13:55:54.834963Z",
+		"updated_at": "2023-07-12T09:10:11.222333Z",
+		"counterparty_name": "John Smith",
+		"save_counterparty": true,
+		"request_id": "5a7fcb46-4be4-47d4-a56f-27a2e5b78dd1",
+		"payout_methods": ["revolut"],
+		"account_id": "85f515e4-588f-4496-a6a5-a7615a193e6b",
+		"amount": 105.5,
+		"currency": "GBP",
+		"reference": "Invoice 2026/03",
+		"counterparty_id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+		"transaction_id": "163e0ef6-2414-4fcf-846f-1f871059d506"
+	},
+	{
+		"id": "0e1a8d4b-1d1e-457d-9f10-3e7007a82ea8",
+		"state": "cancelled",
+		"created_at": "2023-08-01T08:00:00.000000Z",
+		"updated_at": "2023-08-01T09:30:00.000000Z",
+		"counterparty_name": "Acme Corp",
+		"save_counterparty": false,
+		"request_id": "2e2837f5-828d-473f-85e8-5614afd3f8e8",
+		"payout_methods": ["bank_account"],
+		"account_id": "85f515e4-588f-4496-a6a5-a7615a193e6b",
+		"amount": 10,
+		"currency": "EUR",
+		"reference": "Refund",
+		"cancellation_reason": "too_many_name_check_attempts"
+	}
+]

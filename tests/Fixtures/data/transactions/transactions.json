@@ -1,0 +1,40 @@
+[
+	{
+		"id": "63d2a8bd-8b67-a2de-b1d2-b58ee21d7073",
+		"type": "transfer",
+		"state": "pending",
+		"created_at": "2023-01-26T16:22:21.765313Z",
+		"updated_at": "2023-01-26T16:22:21.765313Z",
+		"scheduled_for": "2023-02-01",
+		"legs": [
+			{
+				"leg_id": "63d2a8bd-8b67-a2de-0000-b58ee21d7073",
+				"account_id": "05018b0d-e67c-4fec-bea6-415e9da9432c",
+				"amount": -10,
+				"currency": "GBP"
+			},
+			{
+				"leg_id": "63d2a8bd-8b67-a2de-1111-b58ee21d7073",
+				"account_id": "b7ec67d3-5af1-42c8-bece-3d28nlmo894d",
+				"amount": 11.5,
+				"currency": "EUR"
+			}
+		]
+	},
+	{
+		"id": "9a6434d8-3581-4faa-988b-48875e785be7",
+		"type": "temp_block",
+		"state": "declined",
+		"reason_code": "insufficient_balance",
+		"created_at": "2023-01-27T10:00:00.000000Z",
+		"updated_at": "2023-01-27T10:00:01.000000Z",
+		"legs": [
+			{
+				"leg_id": "9a6434d8-3581-4faa-0000-48875e785be7",
+				"account_id": "05018b0d-e67c-4fec-bea6-415e9da9432c",
+				"amount": -50,
+				"currency": "GBP"
+			}
+		]
+	}
+]

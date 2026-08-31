@@ -1,0 +1,19 @@
+{
+	"next_page_token": "MjAyNi0wMS0wMVQwOToxMzoxNS40MDZaN2RhNTFjZGY0LTZiYjctNDRkNi04OWU1LTc2OWEzZGYxZDc5ZA",
+	"accounting_categories": [
+		{
+			"id": "8d831292-f950-4c5a-83f9-030df8cacd3f",
+			"name": "Transportation",
+			"code": "400",
+			"created_at": "2026-03-11T17:03:25.570942Z",
+			"updated_at": "2026-03-11T17:03:25.570942Z",
+			"default_tax_rate_id": "d8f6bf6c-5b70-4c16-9549-5943e67ab009"
+		},
+		{
+			"id": "8d749b93-4a2e-4f28-8b5b-9d64fe2e1d62",
+			"name": "Office Supplies",
+			"created_at": "2026-03-11T17:03:25.570940Z",
+			"updated_at": "2026-03-11T17:03:25.570940Z"
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"next_page_token": "MjAyNi0wMS0wMVQwOToxMzoxNS40MDZaN2RhNTFjZGY0LTZiYjctNDRkNi04OWU1LTc2OWEzZGYxZDc5ZA",
+	"label_groups": [
+		{
+			"id": "f0e1d2c3-b4a5-4678-9012-3456789abcde",
+			"name": "Department",
+			"created_at": "2026-03-19T07:15:00.000000Z",
+			"updated_at": "2026-03-19T08:45:22.111444Z"
+		},
+		{
+		"id": "f09ad1ad3-a1c0-4c09-b8f8-24b439e72690",
+		"name": "Employee",
+		"created_at": "2026-03-11T10:33:51.121090Z",
+		"updated_at": "2026-03-11T10:33:51.121090Z"
+		}
+	]
+}

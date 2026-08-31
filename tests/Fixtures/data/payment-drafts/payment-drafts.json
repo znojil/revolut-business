@@ -1,0 +1,15 @@
+{
+	"payment_orders": [
+		{
+			"id": "e7e54cb2-861a-aaaa-80e9-3e6600f3db10",
+			"scheduled_for": "2026-06-24",
+			"title": "Draft Payment through API",
+			"payments_count": 1,
+			"source": "api"
+		},
+		{
+			"id": "a1b2c3d4-e5f6-4a5b-bc6d-7e8f9a0b1c2d",
+			"payments_count": 3
+		}
+	]
+}

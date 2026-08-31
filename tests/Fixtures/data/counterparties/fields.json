@@ -1,0 +1,29 @@
+{
+	"fields": [
+		{
+			"name": "first_name",
+			"required": true
+		},
+		{
+			"name": "tax_id",
+			"required": true,
+			"regex": {
+				"pattern": "^\\d{11}$",
+				"description": "CPF (Cadastro de Pessoas Fisicas)"
+			}
+		},
+		{
+			"name": "account_type",
+			"required": false,
+			"options": [
+				{
+					"value": "checking",
+					"default": true
+				},
+				{
+					"value": "savings"
+				}
+			]
+		}
+	]
+}

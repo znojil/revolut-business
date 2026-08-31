@@ -1,0 +1,34 @@
+{
+	"amount": {
+		"amount": 100,
+		"currency": "GBP"
+	},
+	"fee": {
+		"amount": 1.25,
+		"currency": "GBP",
+		"breakdown": {
+			"transfer_fee": {
+				"amount": 0.5,
+				"currency": "GBP"
+			},
+			"exchange_fee": {
+				"amount": 0.75,
+				"currency": "GBP"
+			}
+		}
+	},
+	"estimated_total": {
+		"amount": 101.25,
+		"currency": "GBP"
+	},
+	"estimated_exchange_rate": 1.1725,
+	"estimated_amount_after_exchange": {
+		"amount": 117.25,
+		"currency": "EUR"
+	},
+	"estimated_arrival": {
+		"date": "2026-03-20",
+		"speed": "by_date"
+	},
+	"warnings": ["volatile_fx_rate"]
+}

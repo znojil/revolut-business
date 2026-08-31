@@ -1,0 +1,14 @@
+[
+	{
+		"code": "payment_for_goods_and_services",
+		"name": "Payment for goods and services"
+	},
+	{
+		"code": "payroll",
+		"name": "Payroll"
+	},
+	{
+		"code": "travel_and_transportation",
+		"name": "Travel and transportation"
+	}
+]

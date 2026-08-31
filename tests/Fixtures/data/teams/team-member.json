@@ -1,0 +1,10 @@
+{
+	"id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+	"email": "ray.trenfield@example.com",
+	"first_name": "Ray",
+	"last_name": "Trenfield",
+	"state": "locked",
+	"role_id": "admin",
+	"created_at": "2026-01-15T10:20:30.123456Z",
+	"updated_at": "2026-03-10T14:45:12.987654Z"
+}

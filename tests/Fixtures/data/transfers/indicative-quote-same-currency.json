@@ -1,0 +1,14 @@
+{
+	"amount": {
+		"amount": 100,
+		"currency": "GBP"
+	},
+	"fee": {
+		"amount": 0,
+		"currency": "GBP"
+	},
+	"estimated_total": {
+		"amount": 100,
+		"currency": "GBP"
+	}
+}

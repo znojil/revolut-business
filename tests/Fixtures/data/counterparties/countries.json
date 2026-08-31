@@ -1,0 +1,12 @@
+{
+	"countries": [
+		{
+			"country": "GB",
+			"currencies": ["GBP", "EUR", "USD"]
+		},
+		{
+			"country": "US",
+			"currencies": ["USD"]
+		}
+	]
+}

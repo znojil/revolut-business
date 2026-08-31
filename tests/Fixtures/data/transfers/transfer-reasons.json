@@ -1,0 +1,20 @@
+[
+	{
+		"country": "GB",
+		"currency": "GBP",
+		"code": "services",
+		"description": "Payment for services"
+	},
+	{
+		"country": "BR",
+		"currency": "BRL",
+		"code": "goods",
+		"description": "Payment for goods"
+	},
+	{
+		"country": "IN",
+		"currency": "INR",
+		"code": "undocumented_reason",
+		"description": "A reason code the specification does not list"
+	}
+]

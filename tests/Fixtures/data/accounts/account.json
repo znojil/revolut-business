@@ -1,0 +1,10 @@
+{
+	"id": "b7ec67d3-5af1-42c8-bece-3d28nlmo894d",
+	"name": "International account",
+	"balance": 3171.89,
+	"currency": "GBP",
+	"state": "active",
+	"public": false,
+	"created_at": "2022-08-05T14:29:22.215785Z",
+	"updated_at": "2022-08-05T14:29:22.215785Z"
+}

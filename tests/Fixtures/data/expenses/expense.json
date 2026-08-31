@@ -1,0 +1,37 @@
+{
+	"id": "8decf9f8-053e-46cb-92d8-a7b450fe5ae0",
+	"state": "awaiting_review",
+	"transaction_type": "external",
+	"description": "Printer paper",
+	"submitted_at": "2024-09-13T20:48:40.912Z",
+	"payer": "Ray Trenfield",
+	"merchant": "Best Printers Company",
+	"transaction_id": "163e0ef6-2414-4fcf-846f-1f871059d506",
+	"expense_date": "2024-09-13T18:47:01.782Z",
+	"splits": [
+		{
+			"amount": {
+				"amount": 15.39,
+				"currency": "GBP"
+			},
+			"category": {
+				"id": "71b9ec74-d5ff-4aa1-a489-f8dc39d4c9b7",
+				"name": "Printing & Stationery",
+				"code": "461"
+			},
+			"tax_rate": {
+				"id": "5704fdd2-bac2-42ec-bab0-e075182260be",
+				"name": "VAT",
+				"percentage": 20
+			}
+		}
+	],
+	"labels": {
+		"Department": ["HR"]
+	},
+	"receipt_ids": ["84c0169a-37f9-4bfa-ab1e-f2c81dbc34cf"],
+	"spent_amount": {
+		"amount": 15.39,
+		"currency": "GBP"
+	}
+}

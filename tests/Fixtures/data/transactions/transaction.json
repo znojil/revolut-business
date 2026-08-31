@@ -1,0 +1,50 @@
+{
+	"id": "63d2a8bd-8b67-a2de-b1d2-b58ee21d7073",
+	"type": "card_payment",
+	"request_id": "6a8b2ad9-d8b9-4348-9207-1c5737ccf11b",
+	"state": "completed",
+	"created_at": "2023-01-26T16:22:21.765313Z",
+	"updated_at": "2023-01-26T16:22:25.100000Z",
+	"completed_at": "2023-01-26T16:22:25.100000Z",
+	"reference": "To John Doe",
+	"related_transaction_id": "9a6434d8-3581-4faa-988b-48875e785be7",
+	"merchant": {
+		"id": "b0f8f8a4-1c2d-4e3f-8a9b-0c1d2e3f4a5b",
+		"name": "Best Printers Company",
+		"full_name": "BPC*1234MN1HA2",
+		"city": "London",
+		"category_code": "5943",
+		"country": "GBR"
+	},
+	"legs": [
+		{
+			"leg_id": "63d2a8bd-8b67-a2de-0000-b58ee21d7073",
+			"account_id": "05018b0d-e67c-4fec-bea6-415e9da9432c",
+			"counterparty": {
+				"id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+				"account_type": "external",
+				"account_id": "ff29e658-f07f-4d81-bc0f-7ad0ff141357"
+			},
+			"amount": -10,
+			"fee": 0.25,
+			"currency": "GBP",
+			"bill_amount": -11.5,
+			"bill_currency": "EUR",
+			"balance": 3161.89
+		}
+	],
+	"card": {
+		"id": "8a7b6c5d-4e3f-4a1b-8c9d-0e1f2a3b4c5d",
+		"card_number": "424242******4242",
+		"first_name": "John",
+		"last_name": "Smith",
+		"phone": "+447700900000",
+		"references": [
+			{
+				"name": "Cost centre",
+				"value": "HR"
+			}
+		]
+	},
+	"auth_code": "224466"
+}

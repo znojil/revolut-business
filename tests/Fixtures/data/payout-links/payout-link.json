@@ -1,0 +1,17 @@
+{
+	"id": "12dcd8c2-6408-458f-98a9-3f4abc180898",
+	"state": "active",
+	"created_at": "2023-07-11T13:55:54.834963Z",
+	"updated_at": "2023-07-11T13:55:55.082655Z",
+	"counterparty_name": "John Smith",
+	"save_counterparty": false,
+	"request_id": "5a7fcb46-4be4-47d4-a56f-27a2e5b78dd1",
+	"expiry_date": "2023-07-18T13:55:55.082280Z",
+	"payout_methods": ["revolut", "bank_account", "card"],
+	"account_id": "85f515e4-588f-4496-a6a5-a7615a193e6b",
+	"amount": 105.5,
+	"currency": "GBP",
+	"url": "https://revolut.me/pay/12dcd8c2-6408-458f-98a9-3f4abc180898",
+	"reference": "Invoice 2026/03",
+	"transfer_reason_code": "services"
+}

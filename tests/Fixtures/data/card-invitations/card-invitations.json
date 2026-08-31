@@ -1,0 +1,49 @@
+[
+	{
+		"id": "c3d4e5f6-a7b8-4c9d-8e0f-1a2b3c4d5e6f",
+		"state": "created",
+		"created_at": "2026-04-01T09:15:00.123456Z",
+		"updated_at": "2026-04-01T09:15:00.123456Z",
+		"expiry_date": "2026-06-30",
+		"holder_id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+		"virtual": true,
+		"label": "Contractor card",
+		"spend_program": {
+			"label": "Travel programme"
+		},
+		"spending_limits": {
+			"single": {
+				"amount": 250,
+				"currency": "GBP"
+			},
+			"month": {
+				"amount": 2000,
+				"currency": "GBP"
+			}
+		},
+		"spending_period": {
+			"start_date": "2026-04-01",
+			"end_date": "2026-12-31",
+			"end_date_action": "lock"
+		},
+		"categories": ["airlines", "accommodation"],
+		"merchant_controls": {
+			"control_type": "block",
+			"merchant_ids": ["b0f8f8a4-1c2d-4e3f-8a9b-0c1d2e3f4a5b"]
+		},
+		"mcc_controls": {
+			"control_type": "allow",
+			"mccs": ["5411", "7011"]
+		},
+		"countries": ["GB", "IE"],
+		"accounts": ["05018b0d-e67c-4fec-bea6-415e9da9432c"]
+	},
+	{
+		"id": "d4e5f6a7-b8c9-4d0e-9f1a-2b3c4d5e6f70",
+		"state": "created",
+		"created_at": "2026-04-02T11:00:00.000000Z",
+		"updated_at": "2026-04-02T11:00:00.000000Z",
+		"virtual": true,
+		"accounts": []
+	}
+]

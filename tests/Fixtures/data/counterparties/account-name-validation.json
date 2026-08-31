@@ -1,0 +1,12 @@
+{
+	"result_code": "close_match",
+	"reason": {
+		"type": "uk_cop",
+		"code": "close_match"
+	},
+	"individual_name": {
+		"first_name": "Joan",
+		"last_name": "Smith"
+	},
+	"name_validation_id": "3f1a9d2b-6c4e-4f8a-9b2d-7e5c1a0f3b48"
+}

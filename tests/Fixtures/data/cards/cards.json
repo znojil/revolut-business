@@ -1,0 +1,67 @@
+[
+	{
+		"id": "8a7b6c5d-4e3f-4a1b-8c9d-0e1f2a3b4c5d",
+		"holder_id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+		"contact_ids": ["0e1a8d4b-1d1e-457d-9f10-3e7007a82ea8"],
+		"created_at": "2026-01-15T10:20:30.123456Z",
+		"updated_at": "2026-03-10T14:45:12.987654Z",
+		"product": {
+			"code": "TRAVEL"
+		},
+		"virtual": true,
+		"last_digits": "4242",
+		"expiry": "03/2029",
+		"label": "Marketing card",
+		"references": [
+			{
+				"name": "Cost centre",
+				"value": "HR"
+			}
+		],
+		"state": "active",
+		"can_be_unlocked": false,
+		"spend_program": {
+			"label": "Travel programme"
+		},
+		"spending_limits": {
+			"single": {
+				"amount": 250,
+				"currency": "GBP"
+			},
+			"month": {
+				"amount": 2000,
+				"currency": "GBP"
+			},
+			"all_time": {
+				"amount": 10000,
+				"currency": "GBP"
+			}
+		},
+		"spending_period": {
+			"start_date": "2026-01-01",
+			"end_date": "2026-12-31",
+			"end_date_action": "lock"
+		},
+		"categories": ["airlines", "accommodation", "transport"],
+		"merchant_controls": {
+			"control_type": "block",
+			"merchant_ids": ["b0f8f8a4-1c2d-4e3f-8a9b-0c1d2e3f4a5b"]
+		},
+		"mcc_controls": {
+			"control_type": "allow",
+			"mccs": ["5411", "7011"]
+		},
+		"countries": ["GB", "IE"],
+		"accounts": ["05018b0d-e67c-4fec-bea6-415e9da9432c"]
+	},
+	{
+		"id": "5f4e3d2c-1b0a-4987-8765-43210fedcba9",
+		"created_at": "2026-02-01T08:00:00.000000Z",
+		"updated_at": "2026-02-01T08:00:00.000000Z",
+		"virtual": true,
+		"last_digits": "1234",
+		"expiry": "11/2030",
+		"state": "frozen",
+		"accounts": []
+	}
+]

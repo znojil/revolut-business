@@ -1,0 +1,68 @@
+[
+	{
+		"id": "8decf9f8-053e-46cb-92d8-a7b450fe5ae0",
+		"state": "approved",
+		"transaction_type": "card_payment",
+		"description": "Printer paper",
+		"submitted_at": "2024-09-13T20:48:40.912Z",
+		"completed_at": "2024-09-13T20:48:40.948Z",
+		"payer": "Ray Trenfield",
+		"merchant": "Best Printers Company",
+		"transaction_id": "163e0ef6-2414-4fcf-846f-1f871059d506",
+		"expense_date": "2024-09-13T18:47:01.782Z",
+		"splits": [
+			{
+				"amount": {
+					"amount": 15.39,
+					"currency": "GBP"
+				},
+				"category": {
+					"id": "71b9ec74-d5ff-4aa1-a489-f8dc39d4c9b7",
+					"name": "Printing & Stationery",
+					"code": "461"
+				},
+				"tax_rate": {
+					"id": "5704fdd2-bac2-42ec-bab0-e075182260be",
+					"name": "VAT",
+					"percentage": 20
+				}
+			},
+			{
+				"amount": {
+					"amount": 8.99,
+					"currency": "GBP"
+				},
+				"category": {
+					"id": "a5532a5e-d859-4795-967b-14723f8920ea",
+					"name": "Groceries"
+				},
+				"tax_rate": {
+					"id": "d92efe31-fc26-4364-af4b-3630c1057ece",
+					"name": "No VAT"
+				}
+			}
+		],
+		"labels": {
+			"Office supplies": ["photocopying"],
+			"Department": ["HR"]
+		},
+		"receipt_ids": ["84c0169a-37f9-4bfa-ab1e-f2c81dbc34cf"],
+		"spent_amount": {
+			"amount": 24.38,
+			"currency": "GBP"
+		}
+	},
+	{
+		"id": "0e1a8d4b-1d1e-457d-9f10-3e7007a82ea8",
+		"state": "missing_info",
+		"transaction_type": "mileage_reimbursement",
+		"expense_date": "2024-10-01T09:00:00.000Z",
+		"splits": [],
+		"labels": {},
+		"receipt_ids": [],
+		"spent_amount": {
+			"amount": 0,
+			"currency": "EUR"
+		}
+	}
+]

@@ -1,0 +1,20 @@
+{
+	"id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+	"name": "Acme Corp",
+	"profile_type": "business",
+	"country": "US",
+	"state": "created",
+	"created_at": "2022-08-05T14:29:22.215785Z",
+	"updated_at": "2022-08-05T14:29:22.215785Z",
+	"accounts": [
+		{
+			"id": "ff29e658-f07f-4d81-bc0f-7ad0ff141357",
+			"currency": "USD",
+			"type": "external",
+			"account_no": "486196918",
+			"routing_number": "021000021",
+			"route": "fedwire",
+			"account_type": "checking"
+		}
+	]
+}

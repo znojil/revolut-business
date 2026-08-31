@@ -1,0 +1,58 @@
+{
+	"schedule_for": "2026-06-24",
+	"title": "Draft Payment through API",
+	"source": "business_app",
+	"payments": [
+		{
+			"id": "645a7696-22f3-aa47-9c74-cbae0449cc46",
+			"amount": {
+				"amount": 123.45,
+				"currency": "GBP"
+			},
+			"currency": "GBP",
+			"account_id": "05018b0d-e67c-4fec-bea6-415e9da9432c",
+			"receiver": {
+				"counterparty_id": "7e18625a-3e6c-4d4f-8429-216c25309a5f",
+				"account_id": "ff29e658-f07f-4d81-bc0f-7ad0ff141357"
+			},
+			"state": "PENDING",
+			"reference": "Invoice 2026/03",
+			"transfer_reason_code": "services",
+			"current_charge_options": {
+				"from": {
+					"amount": 123.45,
+					"currency": "GBP"
+				},
+				"to": {
+					"amount": 143.21,
+					"currency": "EUR"
+				},
+				"rate": "1.16",
+				"fee": {
+					"amount": 0.5,
+					"currency": "GBP"
+				}
+			}
+		},
+		{
+			"id": "8a7b6c5d-4e3f-4a1b-8c9d-0e1f2a3b4c5d",
+			"amount": {
+				"amount": 10,
+				"currency": "GBP"
+			},
+			"account_id": "05018b0d-e67c-4fec-bea6-415e9da9432c",
+			"state": "FAILED",
+			"error_message": "Insufficient balance",
+			"current_charge_options": {
+				"from": {
+					"amount": 10,
+					"currency": "GBP"
+				},
+				"to": {
+					"amount": 10,
+					"currency": "GBP"
+				}
+			}
+		}
+	]
+}

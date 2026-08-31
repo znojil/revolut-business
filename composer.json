@@ -1,0 +1,34 @@
+{
+	"name": "znojil/revolut-business",
+	"description": "💸 A simple and modern PHP library for communicating with the Revolut API.",
+	"keywords": ["revolut", "api", "sdk", "client", "money", "payment"],
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{"name": "Marek Znojil"}
+	],
+	"require": {
+		"php": "^8.2",
+		"znojil/http": "^1.1"
+	},
+	"require-dev": {
+		"mockery/mockery": "^1.6",
+		"nette/tester": "^2.6",
+		"phpstan/phpstan": "^2.2",
+		"phpstan/phpstan-mockery": "^2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Znojil\\RevolutBusiness\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Znojil\\RevolutBusiness\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"phpstan": "vendor/bin/phpstan",
+		"tester": "vendor/bin/tester tests -s -C"
+	}
+}
