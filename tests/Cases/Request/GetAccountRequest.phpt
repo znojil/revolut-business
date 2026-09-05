@@ -33,6 +33,7 @@ final class GetAccountRequestTest extends \Tester\TestCase{
 		Assert::false($result->public);
 		Assert::same('2022-08-05T14:29:22+00:00', $result->createdAt->format('c'));
 		Assert::same('2022-08-05T14:29:22+00:00', $result->updatedAt->format('c'));
+		Assert::same(Enum\AccountType::Current, $result->accountType);
 	}
 
 }

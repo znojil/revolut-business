@@ -62,6 +62,7 @@ foreach($client->send(new GetAccountsRequest) as $account){
 	$account->balance; // float
 	$account->currency; // Currency enum, or string for a currency not in the enum
 	$account->state; // AccountState enum
+	$account->accountType; // AccountType enum
 	$account->createdAt; // DateTimeImmutable
 }
 ```

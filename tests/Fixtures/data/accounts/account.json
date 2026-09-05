@@ -6,5 +6,6 @@
 	"state": "active",
 	"public": false,
 	"created_at": "2022-08-05T14:29:22.215785Z",
-	"updated_at": "2022-08-05T14:29:22.215785Z"
+	"updated_at": "2022-08-05T14:29:22.215785Z",
+	"account_type": "current"
 }

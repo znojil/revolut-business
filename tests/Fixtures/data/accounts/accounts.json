@@ -7,7 +7,8 @@
 		"state": "active",
 		"public": false,
 		"created_at": "2022-08-05T14:29:22.215785Z",
-		"updated_at": "2022-08-05T14:29:22.215785Z"
+		"updated_at": "2022-08-05T14:29:22.215785Z",
+		"account_type": "current"
 	},
 	{
 		"id": "bssc67d3-5afd-42c2-bece-3d28nlmo894d",
@@ -16,6 +17,7 @@
 		"state": "inactive",
 		"public": true,
 		"created_at": "2022-08-25T14:29:22.215785Z",
-		"updated_at": "2022-08-30T14:29:22.215785Z"
+		"updated_at": "2022-08-30T14:29:22.215785Z",
+		"account_type": "savings"
 	}
 ]
