@@ -50,6 +50,7 @@ final class GetTransactionRequestTest extends \Tester\TestCase{
 		Assert::same(3161.89, $leg->balance);
 		Assert::same(Enum\TransactionCounterpartyAccountType::External, $leg->counterparty?->accountType);
 		Assert::same('ff29e658-f07f-4d81-bc0f-7ad0ff141357', $leg->counterparty?->accountId);
+		Assert::same('To John Doe', $leg->description);
 
 		Assert::same('424242******4242', $result->card?->cardNumber);
 		Assert::same('John', $result->card?->firstName);

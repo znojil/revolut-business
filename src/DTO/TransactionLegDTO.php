@@ -7,7 +7,7 @@ use Znojil\RevolutBusiness\Enum\Currency;
 
 /**
  * @phpstan-import-type TransactionCounterpartyResponseData from TransactionCounterpartyDTO
- * @phpstan-type TransactionLegResponseData array{leg_id: string, amount: float, fee?: float, currency: string, bill_amount?: float, bill_currency?: string, account_id: string, counterparty?: TransactionCounterpartyResponseData, balance?: float}
+ * @phpstan-type TransactionLegResponseData array{leg_id: string, amount: float, fee?: float, currency: string, bill_amount?: float, bill_currency?: string, account_id: string, counterparty?: TransactionCounterpartyResponseData, description?: string, balance?: float}
  */
 final readonly class TransactionLegDTO{
 
@@ -25,6 +25,7 @@ final readonly class TransactionLegDTO{
 			isset($data['bill_currency']) ? (Currency::tryFrom($data['bill_currency']) ?? $data['bill_currency']) : null,
 			$data['account_id'],
 			isset($data['counterparty']) ? TransactionCounterpartyDTO::fromResponseData($data['counterparty']) : null,
+			$data['description'] ?? null,
 			$data['balance'] ?? null
 		);
 	}
@@ -38,6 +39,7 @@ final readonly class TransactionLegDTO{
 		public string|Currency|null $billCurrency,
 		public string $accountId,
 		public ?TransactionCounterpartyDTO $counterparty,
+		public ?string $description,
 		public ?float $balance
 	){}
 

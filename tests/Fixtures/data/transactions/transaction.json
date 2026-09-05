@@ -30,7 +30,8 @@
 			"currency": "GBP",
 			"bill_amount": -11.5,
 			"bill_currency": "EUR",
-			"balance": 3161.89
+			"balance": 3161.89,
+			"description": "To John Doe"
 		}
 	],
 	"card": {
