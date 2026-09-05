@@ -40,7 +40,7 @@ final class TokenPairTest extends \Tester\TestCase{
 		// custom margin
 		foreach([
 			[60, false],
-			[119, false],
+			[90, false], // not 119, that would leave the assertion only a one second budget against the real clock
 			[120, true],
 			[300, true]
 		] as [$marginSeconds, $isExpired]){

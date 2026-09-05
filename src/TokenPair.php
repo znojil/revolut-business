@@ -26,7 +26,7 @@ final readonly class TokenPair implements \JsonSerializable{
 	){}
 
 	public function isExpired(int $marginSeconds = 60): bool{
-		return $this->expirationDatetime->modify("-{$marginSeconds} seconds") < new \DateTimeImmutable;
+		return $this->expirationDatetime->modify("-{$marginSeconds} seconds") <= new \DateTimeImmutable;
 	}
 
 	/**
