@@ -12,6 +12,10 @@ final class FileTokenStorage implements TokenStorage{
 		private readonly string $filePath
 	){}
 
+	/**
+	 * @throws Exception\IOException if the token file exists but cannot be read
+	 * @throws Exception\JsonException if the token file is not valid JSON
+	 */
 	public function load(): ?TokenPair{
 		if(!is_file($this->filePath)){
 			return null;
@@ -27,6 +31,9 @@ final class FileTokenStorage implements TokenStorage{
 		return TokenPair::fromArray($data);
 	}
 
+	/**
+	 * @throws Exception\IOException if the token file cannot be written
+	 */
 	public function save(TokenPair $tokenPair): void{
 		$dir = dirname($this->filePath);
 		if(!is_dir($dir)){

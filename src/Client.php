@@ -27,6 +27,7 @@ final class Client{
 	 * @throws Auth\Exception\AuthenticationException if the code exchange fails (invalid/expired code, wrong client configuration)
 	 * @throws Auth\Exception\ClientAssertionException if the JWT client assertion cannot be created (invalid private key)
 	 * @throws Exception\IOException if the bundled FileTokenStorage fails to persist the token pair (custom TokenStorage implementations may throw their own exceptions)
+	 * @throws Exception\JsonException if the token endpoint returns a successful response that is not valid JSON
 	 * @throws Exception\UnexpectedResponseException if the token endpoint returns a successful response that does not match the expected shape
 	 */
 	public function authorize(string $code): void{
@@ -43,11 +44,11 @@ final class Client{
 	 * @throws Exception\MissingTokenException if no token pair is stored yet — run the authorization flow first
 	 * @throws Auth\Exception\AuthenticationException if the access token refresh fails (e.g. revoked refresh token)
 	 * @throws Auth\Exception\ClientAssertionException if the JWT client assertion cannot be created (invalid private key)
-	 * @throws Exception\IOException if the bundled FileTokenStorage fails to persist refreshed tokens (custom TokenStorage implementations may throw their own exceptions)
+	 * @throws Exception\IOException if the bundled FileTokenStorage fails to read the token pair or persist refreshed tokens (custom TokenStorage implementations may throw their own exceptions)
 	 * @throws Exception\ClientException on 4xx API response
 	 * @throws Exception\ServerException on 5xx API response
 	 * @throws Exception\ResponseException on any other non-2xx API response
-	 * @throws Exception\JsonException if a successful response body is not valid JSON
+	 * @throws Exception\JsonException if a successful response body or the token file of the bundled FileTokenStorage is not valid JSON
 	 * @throws Exception\UnexpectedValueException if a response contains an unknown enum value
 	 * @throws Exception\UnexpectedResponseException if a successful response body does not match the expected shape
 	 */
