@@ -48,6 +48,7 @@ final class Client{
 	 * @throws Exception\ResponseException on any other non-2xx API response
 	 * @throws Exception\JsonException if a successful response body is not valid JSON
 	 * @throws Exception\UnexpectedValueException if a response contains an unknown enum value
+	 * @throws Exception\UnexpectedResponseException if a successful response body does not match the expected shape
 	 */
 	public function send(Http\Request $request): mixed{
 		$uri = new \Znojil\Http\Message\Uri(
@@ -60,9 +61,9 @@ final class Client{
 		$response = $this->httpClient->send($request->getMethod(), $uri, $headers, $request->getData(), $request->getHttpClientOptions());
 
 		$statusCode = $response->getStatusCode();
-		if($statusCode < 200 || $statusCode >= 300){
-			$body = (string) $response->getBody();
+		$body = (string) $response->getBody();
 
+		if($statusCode < 200 || $statusCode >= 300){
 			$apiErrorId = null;
 			$apiErrorCode = null;
 			$message = "Request failed. Result:\n" . $body;
@@ -84,7 +85,13 @@ final class Client{
 			};
 		}
 
-		return $request->createResponse($response);
+		try{
+			return $request->createResponse($response);
+		}catch(Exception\Exception $e){
+			throw $e;
+		}catch(\ValueError|\TypeError|\Exception $e){
+			throw new Exception\UnexpectedResponseException('Unexpected response: ' . $e->getMessage(), 0, responseBody: $body, previous: $e);
+		}
 	}
 
 }

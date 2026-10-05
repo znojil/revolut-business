@@ -123,6 +123,36 @@ final class ClientTest extends \Tester\TestCase{
 		);
 	}
 
+	public function testSendThrowsUnexpectedResponseException(): void{
+		// the body does not match the expected shape, the original error is kept as previous
+		foreach([
+			[
+				'{"id":"b7ec67d3","balance":"lots","currency":"GBP","state":"active","public":false,"created_at":"2022-08-05T14:29:22Z","updated_at":"2022-08-05T14:29:22Z","account_type":"current"}', // mistyped field
+				\TypeError::class
+			],
+			[
+				'{"id":"b7ec67d3","balance":1.5,"currency":"GBP","state":"active","public":false,"created_at":"not a date","updated_at":"2022-08-05T14:29:22Z","account_type":"current"}', // invalid date
+				\Exception::class
+			]
+		] as [$body, $previous]){
+			/** @var RevolutBusiness\Exception\UnexpectedResponseException */
+			$e = Assert::exception(
+				fn() => $this->getClient($this->getHttpClientWithResponse(new Response(200, body: $body)))
+					->send(new RevolutBusiness\Request\GetAccountRequest('b7ec67d3')),
+				RevolutBusiness\Exception\UnexpectedResponseException::class
+			);
+			Assert::type($previous, $e->getPrevious());
+			Assert::same($body, $e->responseBody);
+		}
+
+		// exceptions of the library are not wrapped
+		Assert::exception(
+			fn() => $this->getClient($this->getHttpClientWithResponse(new Response(200, body: 'non-JSON')))
+				->send(new RevolutBusiness\Request\GetAccountRequest('b7ec67d3')),
+			RevolutBusiness\Exception\JsonException::class
+		);
+	}
+
 	private function getClient(?RevolutBusiness\Http\Client $httpClient = null): RevolutBusiness\Client{
 		$tokenStorage = \Mockery::mock(RevolutBusiness\TokenStorage::class);
 		$tokenStorage->shouldReceive('load')

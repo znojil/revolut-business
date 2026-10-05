@@ -388,9 +388,10 @@ The client throws exceptions to help you identify the issue:
 
 - `Znojil\RevolutBusiness\Exception\ClientException`: For HTTP client-side errors (4xx).
 - `Znojil\RevolutBusiness\Exception\ServerException`: For HTTP server-side errors (5xx).
-- `Znojil\RevolutBusiness\Exception\ResponseException`: For other unsuccessful HTTP responses. The base class of the three above — it carries `apiErrorCode`, `apiErrorId` and the raw `responseBody`.
+- `Znojil\RevolutBusiness\Exception\ResponseException`: For other unsuccessful HTTP responses. The base class of the three above and of `UnexpectedResponseException` — it carries `apiErrorCode`, `apiErrorId` and the raw `responseBody`.
 - `Znojil\RevolutBusiness\Exception\JsonException`: When a response body is not valid JSON.
-- `Znojil\RevolutBusiness\Exception\JsonResponseException`: When a response body is valid JSON but not the object or array the endpoint promises (subtype of `ResponseException`).
+- `Znojil\RevolutBusiness\Exception\JsonResponseException`: When a response body is valid JSON but not the object or array the endpoint promises (subtype of `UnexpectedResponseException`).
+- `Znojil\RevolutBusiness\Exception\UnexpectedResponseException`: When a successful response body does not match the expected shape (e.g. a missing or mistyped field). The original error is available as `getPrevious()`.
 - `Znojil\RevolutBusiness\Exception\UnexpectedValueException`: When a response contains an enum value the library does not know.
 - `Znojil\RevolutBusiness\Exception\InvalidArgumentException`: For invalid input (e.g. an update request with no properties to update).
 - `Znojil\RevolutBusiness\Exception\MissingTokenException`: When no token pair is stored yet — run the authorization flow first.
