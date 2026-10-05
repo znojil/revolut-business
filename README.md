@@ -154,7 +154,7 @@ class MyCustomHttpClient implements RevolutHttpClient{
 $client = new Client($config, $tokenStorage, new MyCustomHttpClient);
 ```
 
-String keys in `$options` are transport-agnostic options defined by this library — your implementation must honor them and reject any other string key with an exception. This library does not define any at the moment. Integer keys are raw `CURLOPT_*` constants — non-cURL implementations must reject them with an exception rather than silently ignore them, so that a consumer never ends up with options that silently don't apply.
+`$data` is JSON-encoded when the `Content-Type` header is JSON and form-encoded otherwise (an empty array then means no content); `null` means no content. String keys in `$options` are transport-agnostic options defined by this library — your implementation must honor them and reject any other string key with an exception. This library does not define any at the moment. Integer keys are raw `CURLOPT_*` constants — non-cURL implementations must reject them with an exception rather than silently ignore them, so that a consumer never ends up with options that silently don't apply.
 
 ## 🧩 Conventions
 
