@@ -13,7 +13,6 @@ final readonly class PaymentDraftDTO{
 
 	/**
 	 * @param PaymentDraftResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		// the API returns `schedule_for`; the documentation lists `scheduled_for`
@@ -23,7 +22,7 @@ final readonly class PaymentDraftDTO{
 			$scheduledFor !== null ? new \DateTimeImmutable($scheduledFor) : null,
 			$data['title'] ?? null,
 			array_map(DraftPaymentInfoDTO::fromResponseData(...), $data['payments']),
-			isset($data['source']) ? \Znojil\RevolutBusiness\Internal\EnumMapper::from(PaymentDraftSource::class, $data['source']) : null
+			isset($data['source']) ? PaymentDraftSource::from($data['source']) : null
 		);
 	}
 

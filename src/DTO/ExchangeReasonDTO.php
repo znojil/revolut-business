@@ -12,11 +12,10 @@ final readonly class ExchangeReasonDTO{
 
 	/**
 	 * @param ExchangeReasonResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(ExchangeReasonCode::class, $data['code']),
+			ExchangeReasonCode::from($data['code']),
 			$data['name']
 		);
 	}

@@ -12,14 +12,13 @@ final readonly class ExchangeResultDTO{
 
 	/**
 	 * @param ExchangeResultResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
 			$data['type'] ?? null,
 			$data['reason_code'] ?? null,
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(TransactionState::class, $data['state']),
+			TransactionState::from($data['state']),
 			new \DateTimeImmutable($data['created_at']),
 			isset($data['completed_at']) ? new \DateTimeImmutable($data['completed_at']) : null
 		);

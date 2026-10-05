@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-type PayoutLinkResponseData array{id: string, state: string, created_at: string, updated_at: string, counterparty_name: string, save_counterparty: bool, request_id: string, expiry_date?: string, payout_methods: list<string>, account_id: string, amount: float, currency: string, url?: string, reference: string, transfer_reason_code?: string, counterparty_id?: string, transaction_id?: string, cancellation_reason?: string}
@@ -13,12 +12,11 @@ final readonly class PayoutLinkDTO{
 
 	/**
 	 * @param PayoutLinkResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
-			EnumMapper::from(Enum\PayoutLinkState::class, $data['state']),
+			Enum\PayoutLinkState::from($data['state']),
 			new \DateTimeImmutable($data['created_at']),
 			new \DateTimeImmutable($data['updated_at']),
 			$data['counterparty_name'],
@@ -26,7 +24,7 @@ final readonly class PayoutLinkDTO{
 			$data['request_id'],
 			isset($data['expiry_date']) ? new \DateTimeImmutable($data['expiry_date']) : null,
 			array_map(
-				fn(string $v): Enum\PayoutMethod => EnumMapper::from(Enum\PayoutMethod::class, $v),
+				Enum\PayoutMethod::from(...),
 				$data['payout_methods']
 			),
 			$data['account_id'],
@@ -38,7 +36,7 @@ final readonly class PayoutLinkDTO{
 			$data['counterparty_id'] ?? null,
 			$data['transaction_id'] ?? null,
 			isset($data['cancellation_reason'])
-				? EnumMapper::from(Enum\PayoutLinkCancellationReason::class, $data['cancellation_reason'])
+				? Enum\PayoutLinkCancellationReason::from($data['cancellation_reason'])
 				: null
 		);
 	}

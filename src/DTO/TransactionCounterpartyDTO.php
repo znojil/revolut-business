@@ -12,13 +12,12 @@ final readonly class TransactionCounterpartyDTO{
 
 	/**
 	 * @param TransactionCounterpartyResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'] ?? null,
 			$data['account_id'] ?? null,
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(TransactionCounterpartyAccountType::class, $data['account_type'])
+			TransactionCounterpartyAccountType::from($data['account_type'])
 		);
 	}
 

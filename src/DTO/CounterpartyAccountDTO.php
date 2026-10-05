@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type AddressResponseData from AddressDTO
@@ -14,7 +13,6 @@ final readonly class CounterpartyAccountDTO{
 
 	/**
 	 * @param CounterpartyAccountResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
@@ -22,7 +20,7 @@ final readonly class CounterpartyAccountDTO{
 			$data['name'] ?? null,
 			$data['bank_country'] ?? null,
 			Enum\Currency::tryFrom($data['currency']) ?? $data['currency'],
-			EnumMapper::from(Enum\CounterpartyAccountType::class, $data['type']),
+			Enum\CounterpartyAccountType::from($data['type']),
 			$data['account_no'] ?? null,
 			$data['iban'] ?? null,
 			$data['sort_code'] ?? null,
@@ -34,12 +32,12 @@ final readonly class CounterpartyAccountDTO{
 			isset($data['route']) ? (Enum\PaymentRoute::tryFrom($data['route']) ?? $data['route']) : null,
 			$data['bank_number'] ?? null,
 			$data['branch_code'] ?? null,
-			isset($data['account_type']) ? EnumMapper::from(Enum\BankAccountType::class, $data['account_type']) : null,
+			isset($data['account_type']) ? Enum\BankAccountType::from($data['account_type']) : null,
 			$data['tax_id'] ?? null,
 			$data['national_id'] ?? null,
 			$data['phone'] ?? null,
 			$data['business_registration_id'] ?? null,
-			isset($data['recipient_charges']) ? EnumMapper::from(Enum\RecipientCharges::class, $data['recipient_charges']) : null,
+			isset($data['recipient_charges']) ? Enum\RecipientCharges::from($data['recipient_charges']) : null,
 			isset($data['address']) ? AddressDTO::fromResponseData($data['address']) : null
 		);
 	}

@@ -5,7 +5,6 @@ namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum\TransactionState;
 use Znojil\RevolutBusiness\Enum\TransactionType;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type TransactionLegResponseData from TransactionLegDTO
@@ -17,14 +16,13 @@ final readonly class TransactionDTO{
 
 	/**
 	 * @param TransactionResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
-			EnumMapper::from(TransactionType::class, $data['type']),
+			TransactionType::from($data['type']),
 			$data['request_id'] ?? null,
-			EnumMapper::from(TransactionState::class, $data['state']),
+			TransactionState::from($data['state']),
 			$data['reason_code'] ?? null,
 			new \DateTimeImmutable($data['created_at']),
 			new \DateTimeImmutable($data['updated_at']),

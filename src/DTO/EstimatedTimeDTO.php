@@ -12,11 +12,10 @@ final readonly class EstimatedTimeDTO{
 
 	/**
 	 * @param EstimatedTimeResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(TimeUnit::class, $data['unit']),
+			TimeUnit::from($data['unit']),
 			$data['min'] ?? null,
 			$data['max'] ?? null
 		);

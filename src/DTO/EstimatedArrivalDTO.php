@@ -12,12 +12,11 @@ final readonly class EstimatedArrivalDTO{
 
 	/**
 	 * @param EstimatedArrivalResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			new \DateTimeImmutable($data['date']),
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(EstimatedArrivalSpeed::class, $data['speed'])
+			EstimatedArrivalSpeed::from($data['speed'])
 		);
 	}
 

@@ -136,6 +136,10 @@ final class ClientTest extends \Tester\TestCase{
 		// the body does not match the expected shape, the original error is kept as previous
 		foreach([
 			[
+				'{"id":"b7ec67d3","balance":1.5,"currency":"GBP","state":"frozen","public":false,"created_at":"2022-08-05T14:29:22Z","updated_at":"2022-08-05T14:29:22Z","account_type":"current"}', // unknown enum value
+				\ValueError::class
+			],
+			[
 				'{"id":"b7ec67d3","balance":"lots","currency":"GBP","state":"active","public":false,"created_at":"2022-08-05T14:29:22Z","updated_at":"2022-08-05T14:29:22Z","account_type":"current"}', // mistyped field
 				\TypeError::class
 			],

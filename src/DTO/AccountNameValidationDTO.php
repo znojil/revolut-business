@@ -14,11 +14,10 @@ final readonly class AccountNameValidationDTO{
 
 	/**
 	 * @param AccountNameValidationResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(AccountNameValidationResult::class, $data['result_code']),
+			AccountNameValidationResult::from($data['result_code']),
 			isset($data['reason']) ? AccountNameValidationReasonDTO::fromResponseData($data['reason']) : null,
 			$data['company_name'] ?? null,
 			isset($data['individual_name']) ? IndividualNameDTO::fromResponseData($data['individual_name']) : null,

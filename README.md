@@ -183,7 +183,7 @@ Most `Update*` endpoints reject an empty body. Those requests throw `InvalidArgu
 
 ### Enums
 
-Most enums are closed: an unknown value in a response throws `UnexpectedValueException`, so you learn about an API change instead of silently getting a wrong value.
+Most enums are closed: an unknown value in a response throws `UnexpectedResponseException`, so you learn about an API change instead of silently getting a wrong value.
 
 Three of them are open, because their real value sets are larger than what the documentation lists and a new entry must not break a running application. `Currency`, `PaymentRoute` and `TransferReasonCode` are typed as `string|Enum` on the response side — you get the enum case when the value is known and the raw string when it isn't:
 
@@ -391,8 +391,7 @@ The client throws exceptions to help you identify the issue:
 - `Znojil\RevolutBusiness\Exception\ResponseException`: For other unsuccessful HTTP responses. The base class of the three above and of `UnexpectedResponseException` — it carries `apiErrorCode`, `apiErrorId` and the raw `responseBody`.
 - `Znojil\RevolutBusiness\Exception\JsonException`: When a response body is not valid JSON.
 - `Znojil\RevolutBusiness\Exception\JsonResponseException`: When a response body is valid JSON but not the object or array the endpoint promises (subtype of `UnexpectedResponseException`).
-- `Znojil\RevolutBusiness\Exception\UnexpectedResponseException`: When a successful response body does not match the expected shape (e.g. a missing or mistyped field). The original error is available as `getPrevious()`.
-- `Znojil\RevolutBusiness\Exception\UnexpectedValueException`: When a response contains an enum value the library does not know.
+- `Znojil\RevolutBusiness\Exception\UnexpectedResponseException`: When a successful response body does not match the expected shape (e.g. an unknown enum value, a missing or mistyped field). The original error is available as `getPrevious()`.
 - `Znojil\RevolutBusiness\Exception\InvalidArgumentException`: For invalid input (e.g. an update request with no properties to update).
 - `Znojil\RevolutBusiness\Exception\MissingTokenException`: When no token pair is stored yet — run the authorization flow first.
 - `Znojil\RevolutBusiness\Exception\IOException`: When `FileTokenStorage` cannot read or write the token file.

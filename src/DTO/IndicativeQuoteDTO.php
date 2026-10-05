@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum\QuoteWarning;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type MoneyResponseData from MoneyDTO
@@ -16,7 +15,6 @@ final readonly class IndicativeQuoteDTO{
 
 	/**
 	 * @param IndicativeQuoteResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
@@ -28,7 +26,7 @@ final readonly class IndicativeQuoteDTO{
 			isset($data['estimated_amount_after_exchange']) ? MoneyDTO::fromResponseData($data['estimated_amount_after_exchange']) : null,
 			isset($data['estimated_arrival']) ? EstimatedArrivalDTO::fromResponseData($data['estimated_arrival']) : null,
 			array_map(
-				fn(string $v): QuoteWarning => EnumMapper::from(QuoteWarning::class, $v),
+				QuoteWarning::from(...),
 				$data['warnings'] ?? []
 			)
 		);

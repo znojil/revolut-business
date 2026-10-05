@@ -12,11 +12,10 @@ final readonly class MerchantControlsDTO{
 
 	/**
 	 * @param MerchantControlsResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(MerchantControlType::class, $data['control_type']),
+			MerchantControlType::from($data['control_type']),
 			$data['merchant_ids']
 		);
 	}

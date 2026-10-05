@@ -5,7 +5,6 @@ namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum\CounterpartyState;
 use Znojil\RevolutBusiness\Enum\ProfileType;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type CounterpartyAccountResponseData from CounterpartyAccountDTO
@@ -16,16 +15,15 @@ final readonly class CounterpartyDTO{
 
 	/**
 	 * @param CounterpartyResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
 			$data['name'],
 			$data['revtag'] ?? null,
-			isset($data['profile_type']) ? EnumMapper::from(ProfileType::class, $data['profile_type']) : null,
+			isset($data['profile_type']) ? ProfileType::from($data['profile_type']) : null,
 			$data['country'] ?? null,
-			EnumMapper::from(CounterpartyState::class, $data['state']),
+			CounterpartyState::from($data['state']),
 			new \DateTimeImmutable($data['created_at']),
 			new \DateTimeImmutable($data['updated_at']),
 			array_map(CounterpartyAccountDTO::fromResponseData(...), $data['accounts'] ?? []),

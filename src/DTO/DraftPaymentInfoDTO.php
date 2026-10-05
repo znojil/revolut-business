@@ -17,7 +17,6 @@ final readonly class DraftPaymentInfoDTO{
 
 	/**
 	 * @param DraftPaymentInfoResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
@@ -26,7 +25,7 @@ final readonly class DraftPaymentInfoDTO{
 			isset($data['currency']) ? (Currency::tryFrom($data['currency']) ?? $data['currency']) : null,
 			$data['account_id'],
 			isset($data['receiver']) ? PaymentReceiverDTO::fromResponseData($data['receiver']) : null,
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(PaymentState::class, $data['state']),
+			PaymentState::from($data['state']),
 			$data['reason'] ?? null,
 			$data['error_message'] ?? null,
 			ChargeOptionsDTO::fromResponseData($data['current_charge_options']),

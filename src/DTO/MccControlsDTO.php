@@ -12,11 +12,10 @@ final readonly class MccControlsDTO{
 
 	/**
 	 * @param MccControlsResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(MccControlType::class, strtolower($data['control_type'])),
+			MccControlType::from(strtolower($data['control_type'])),
 			$data['mccs']
 		);
 	}

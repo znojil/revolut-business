@@ -12,14 +12,13 @@ final readonly class SpendingPeriodDTO{
 
 	/**
 	 * @param SpendingPeriodResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			isset($data['start_date']) ? new \DateTimeImmutable($data['start_date']) : null,
 			isset($data['end_date']) ? new \DateTimeImmutable($data['end_date']) : null,
 			isset($data['end_date_action'])
-				? \Znojil\RevolutBusiness\Internal\EnumMapper::from(SpendingPeriodEndAction::class, $data['end_date_action'])
+				? SpendingPeriodEndAction::from($data['end_date_action'])
 				: null
 		);
 	}

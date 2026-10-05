@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type SpendProgramResponseData from SpendProgramDTO
@@ -18,12 +17,11 @@ final readonly class CardInvitationDTO{
 
 	/**
 	 * @param CardInvitationResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
-			EnumMapper::from(Enum\CardInvitationState::class, $data['state']),
+			Enum\CardInvitationState::from($data['state']),
 			new \DateTimeImmutable($data['created_at']),
 			new \DateTimeImmutable($data['updated_at']),
 			isset($data['expiry_date']) ? new \DateTimeImmutable($data['expiry_date']) : null,
@@ -35,7 +33,7 @@ final readonly class CardInvitationDTO{
 			isset($data['spending_limits']) ? SpendingLimitsWithUsageDTO::fromResponseData($data['spending_limits']) : null,
 			isset($data['spending_period']) ? SpendingPeriodDTO::fromResponseData($data['spending_period']) : null,
 			array_map(
-				fn(string $v): Enum\BusinessMerchantCategory => EnumMapper::from(Enum\BusinessMerchantCategory::class, $v),
+				Enum\BusinessMerchantCategory::from(...),
 				$data['categories'] ?? []
 			),
 			isset($data['merchant_controls']) ? MerchantControlsDTO::fromResponseData($data['merchant_controls']) : null,

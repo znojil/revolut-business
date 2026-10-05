@@ -12,14 +12,13 @@ final readonly class CounterpartyCardDTO{
 
 	/**
 	 * @param CounterpartyCardResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
 			$data['name'],
 			$data['last_digits'],
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(Enum\CardScheme::class, $data['scheme']),
+			Enum\CardScheme::from($data['scheme']),
 			$data['country'],
 			Enum\Currency::tryFrom($data['currency']) ?? $data['currency']
 		);

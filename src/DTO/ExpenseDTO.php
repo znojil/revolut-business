@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\DTO;
 
 use Znojil\RevolutBusiness\Enum;
-use Znojil\RevolutBusiness\Internal\EnumMapper;
 
 /**
  * @phpstan-import-type MoneyResponseData from MoneyDTO
@@ -15,13 +14,12 @@ final readonly class ExpenseDTO{
 
 	/**
 	 * @param ExpenseResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
 			$data['id'],
-			EnumMapper::from(Enum\ExpenseState::class, $data['state']),
-			EnumMapper::from(Enum\ExpenseTransactionType::class, $data['transaction_type']),
+			Enum\ExpenseState::from($data['state']),
+			Enum\ExpenseTransactionType::from($data['transaction_type']),
 			$data['description'] ?? null,
 			isset($data['submitted_at']) ? new \DateTimeImmutable($data['submitted_at']) : null,
 			isset($data['completed_at']) ? new \DateTimeImmutable($data['completed_at']) : null,

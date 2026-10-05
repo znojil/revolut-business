@@ -12,7 +12,6 @@ final readonly class AccountBankDetailsDTO{
 
 	/**
 	 * @param AccountBankDetailsResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(

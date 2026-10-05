@@ -12,7 +12,6 @@ final readonly class TeamMemberDTO{
 
 	/**
 	 * @param TeamMemberResponseData $data
-	 * @throws \Znojil\RevolutBusiness\Exception\UnexpectedValueException
 	 */
 	public static function fromResponseData(array $data): self{
 		return new self(
@@ -20,7 +19,7 @@ final readonly class TeamMemberDTO{
 			$data['email'],
 			$data['first_name'] ?? null,
 			$data['last_name'] ?? null,
-			\Znojil\RevolutBusiness\Internal\EnumMapper::from(TeamMemberState::class, $data['state']),
+			TeamMemberState::from($data['state']),
 			$data['role_id'],
 			new \DateTimeImmutable($data['created_at']),
 			new \DateTimeImmutable($data['updated_at']),
