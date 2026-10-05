@@ -132,6 +132,21 @@ final class ClientTest extends \Tester\TestCase{
 		);
 	}
 
+	public function testSendRejectsInvalidRequestBeforeLoadingToken(): void{
+		$tokenStorage = \Mockery::mock(RevolutBusiness\TokenStorage::class);
+		$tokenStorage->shouldNotReceive('load');
+
+		Assert::exception(
+			fn() => (new RevolutBusiness\Client(
+				new RevolutBusiness\Config('client-id', 'example.com', 'key', true),
+				$tokenStorage,
+				\Mockery::mock(RevolutBusiness\Http\Client::class)
+			))->send(new RevolutBusiness\Request\UpdateAccountingCategoryRequest('6a37383e-cfd3-4a2f-aa81-e3a6e6939efa')),
+			RevolutBusiness\Exception\InvalidArgumentException::class,
+			'At least one property must be provided.'
+		);
+	}
+
 	public function testSendThrowsUnexpectedResponseException(): void{
 		// the body does not match the expected shape, the original error is kept as previous
 		foreach([

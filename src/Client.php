@@ -58,9 +58,10 @@ final class Client{
 		);
 
 		$headers = $request->getHeaders();
+		$data = $request->getData(); // before the access token, so that an invalid request does not trigger a token refresh
 		$headers['Authorization'] = 'Bearer ' . $this->accessTokenProvider->getAccessToken();
 
-		$response = $this->httpClient->send($request->getMethod(), $uri, $headers, $request->getData(), $request->getHttpClientOptions());
+		$response = $this->httpClient->send($request->getMethod(), $uri, $headers, $data, $request->getHttpClientOptions());
 
 		$statusCode = $response->getStatusCode();
 		$body = (string) $response->getBody();
