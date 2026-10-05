@@ -179,7 +179,7 @@ Where a property cannot be cleared through the API, its parameter simply doesn't
 
 ### Requests That Need At Least One Property
 
-Most `Update*` endpoints reject an empty body. Those requests throw `InvalidArgumentException` when you construct one with nothing to update, rather than sending a request that is guaranteed to fail.
+Most `Update*` endpoints reject an empty body. When such a request has nothing to update, `send()` throws `InvalidArgumentException` rather than sending a request that is guaranteed to fail.
 
 ### Enums
 
