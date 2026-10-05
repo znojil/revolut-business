@@ -74,8 +74,8 @@ final class Client{
 					$apiErrorCode = isset($error['code']) && is_int($error['code']) ? $error['code'] : null;
 					$message = $error['message'] . ($apiErrorCode !== null ? " ($apiErrorCode)" : '');
 				}
-			}catch(Exception\JsonException){
-				// non-JSON error body (proxy, outage) — keep the raw body message
+			}catch(\ValueError|\TypeError|\Exception){
+				// unexpected error body (proxy, outage) — keep the raw body message
 			}
 
 			throw match(true){

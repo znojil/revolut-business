@@ -121,6 +121,15 @@ final class ClientTest extends \Tester\TestCase{
 			RevolutBusiness\Exception\ClientException::class,
 			"Request failed. Result:\nnon-JSON"
 		);
+
+		// malformed (mistyped) error payload must not mask the HTTP error
+		Assert::exception(
+			fn() => $this->getClient($this->getHttpClientWithResponse(new Response(500, body: '{"message":42}')))
+				->send(new RevolutBusiness\Request\GetAccountsRequest),
+			RevolutBusiness\Exception\ServerException::class,
+			"Request failed. Result:\n{\"message\":42}",
+			500
+		);
 	}
 
 	public function testSendThrowsUnexpectedResponseException(): void{
