@@ -27,7 +27,9 @@ final class ClientTest extends \Tester\TestCase{
 			// OAuth error format, returned by the token endpoint
 			['{"error":"invalid_grant","error_description":"Refresh token is invalid"}', 'Refresh token is invalid (invalid_grant)'],
 			// response body is not valid JSON
-			['non-JSON', "Auth request failed. Result:\nnon-JSON"]
+			['non-JSON', "Auth request failed. Result:\nnon-JSON"],
+			// malformed (mistyped) error payload must not mask the HTTP error
+			['{"message":42}', "Auth request failed. Result:\n{\"message\":42}"]
 		] as [$body, $message]){
 			Assert::exception(
 				fn() => $this->getClient(new Response(401, body: $body))
@@ -37,6 +39,30 @@ final class ClientTest extends \Tester\TestCase{
 				401
 			);
 		}
+	}
+
+	public function testSendThrowsUnexpectedResponseException(): void{
+		// the body does not match the expected shape, the original error is kept as previous
+		foreach([
+			['{"access_token":42,"token_type":"bearer","expires_in":2399}', \TypeError::class], // mistyped field
+			['{"access_token":"oa_access","token_type":"bearer","expires_in":"soon"}', \Exception::class] // invalid expiration
+		] as [$body, $previous]){
+			/** @var RevolutBusiness\Exception\UnexpectedResponseException */
+			$e = Assert::exception(
+				fn() => $this->getClient(new Response(200, body: $body))
+					->send(new Auth\Request\RefreshTokenRequest('Refresh-token')),
+				RevolutBusiness\Exception\UnexpectedResponseException::class
+			);
+			Assert::type($previous, $e->getPrevious());
+			Assert::same($body, $e->responseBody);
+		}
+
+		// exceptions of the library are not wrapped
+		Assert::exception(
+			fn() => $this->getClient(new Response(200, body: 'non-JSON'))
+				->send(new Auth\Request\RefreshTokenRequest('Refresh-token')),
+			RevolutBusiness\Exception\JsonException::class
+		);
 	}
 
 	private function getClient(Response $response): Auth\Client{

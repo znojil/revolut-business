@@ -27,6 +27,7 @@ final class Client{
 	 * @throws Auth\Exception\AuthenticationException if the code exchange fails (invalid/expired code, wrong client configuration)
 	 * @throws Auth\Exception\ClientAssertionException if the JWT client assertion cannot be created (invalid private key)
 	 * @throws Exception\IOException if the bundled FileTokenStorage fails to persist the token pair (custom TokenStorage implementations may throw their own exceptions)
+	 * @throws Exception\UnexpectedResponseException if the token endpoint returns a successful response that does not match the expected shape
 	 */
 	public function authorize(string $code): void{
 		$this->tokenStorage->save(

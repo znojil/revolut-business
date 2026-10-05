@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Znojil\RevolutBusiness\Auth;
 
 use Znojil\RevolutBusiness\Exception\JsonException;
+use Znojil\RevolutBusiness\Exception\UnexpectedResponseException;
 
 final class Client{
 
@@ -20,6 +21,7 @@ final class Client{
 	 * @throws Exception\AuthenticationException if the token endpoint returns a non-2xx response (invalid/expired code, revoked refresh token, wrong client configuration)
 	 * @throws Exception\ClientAssertionException if the JWT client assertion cannot be created (invalid private key)
 	 * @throws JsonException if a successful response body is not valid JSON
+	 * @throws UnexpectedResponseException if a successful response body does not match the expected shape
 	 */
 	public function send(Request\BaseRequest $request): \Znojil\RevolutBusiness\TokenPair{
 		$uri = new \Znojil\Http\Message\Uri($this->config->getApiUrl() . '/' . ltrim($request->getUrn(), '/'));
@@ -32,9 +34,9 @@ final class Client{
 		$response = $this->httpClient->send($request->getMethod(), $uri, $request->getHeaders(), $data);
 
 		$statusCode = $response->getStatusCode();
-		if($statusCode < 200 || $statusCode >= 300){
-			$body = (string) $response->getBody();
+		$body = (string) $response->getBody();
 
+		if($statusCode < 200 || $statusCode >= 300){
 			$apiErrorCode = null;
 			$message = "Auth request failed. Result:\n" . $body;
 			try{
@@ -47,14 +49,20 @@ final class Client{
 						$message = $error['error_description'] . (isset($error['error']) && is_string($error['error']) ? " ({$error['error']})" : '');
 					}
 				}
-			}catch(JsonException){
-				// non-JSON error body (proxy, outage) — keep the raw body message
+			}catch(\ValueError|\TypeError|\Exception){
+				// unexpected error body (proxy, outage) — keep the raw body message
 			}
 
 			throw new Exception\AuthenticationException($message, $statusCode, $apiErrorCode, responseBody: $body);
 		}
 
-		return $request->createResponse($response);
+		try{
+			return $request->createResponse($response);
+		}catch(\Znojil\RevolutBusiness\Exception\Exception $e){
+			throw $e;
+		}catch(\ValueError|\TypeError|\Exception $e){
+			throw new UnexpectedResponseException('Unexpected response: ' . $e->getMessage(), 0, responseBody: $body, previous: $e);
+		}
 	}
 
 }
