@@ -49,6 +49,7 @@ final class Client{
 	 * @throws Exception\ServerException on 5xx API response
 	 * @throws Exception\ResponseException on any other non-2xx API response
 	 * @throws Exception\JsonException if a successful response body or the token file of the bundled FileTokenStorage is not valid JSON
+	 * @throws Exception\JsonResponseException if a successful response body is not a JSON object or array
 	 * @throws Exception\UnexpectedResponseException if a successful response body does not match the expected shape
 	 */
 	public function send(Http\Request $request): mixed{
