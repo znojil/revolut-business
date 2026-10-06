@@ -394,7 +394,7 @@ The client throws exceptions to help you identify the issue:
 - `Znojil\RevolutBusiness\Exception\UnexpectedResponseException`: When a successful response body does not match the expected shape (e.g. an unknown enum value, a missing or mistyped field). The original error is available as `getPrevious()`.
 - `Znojil\RevolutBusiness\Exception\InvalidArgumentException`: For invalid input (e.g. an update request with no properties to update).
 - `Znojil\RevolutBusiness\Exception\MissingTokenException`: When no token pair is stored yet — run the authorization flow first.
-- `Znojil\RevolutBusiness\Exception\IOException`: When `FileTokenStorage` cannot read or write the token file.
+- `Znojil\RevolutBusiness\Exception\IOException`: When `FileTokenStorage` cannot read or write the token file, or the file is corrupted.
 - `Znojil\RevolutBusiness\Auth\Exception\AuthenticationException`: When the token exchange or refresh fails (e.g. an expired or revoked refresh token).
 - `Znojil\RevolutBusiness\Auth\Exception\ClientAssertionException`: When the JWT client assertion cannot be created (e.g. an invalid private key).
 

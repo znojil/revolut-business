@@ -13,8 +13,7 @@ final class FileTokenStorage implements TokenStorage{
 	){}
 
 	/**
-	 * @throws Exception\IOException if the token file exists but cannot be read
-	 * @throws Exception\JsonException if the token file is not valid JSON
+	 * @throws Exception\IOException if the token file exists but cannot be read or is corrupted
 	 */
 	public function load(): ?TokenPair{
 		if(!is_file($this->filePath)){
@@ -25,10 +24,14 @@ final class FileTokenStorage implements TokenStorage{
 			throw new Exception\IOException("Unable to read token file '{$this->filePath}'.");
 		}
 
-		/** @var TokenPairData */
-		$data = Internal\Json::decode($content);
+		try{
+			/** @var TokenPairData */
+			$data = Internal\Json::decode($content);
 
-		return TokenPair::fromArray($data);
+			return TokenPair::fromArray($data);
+		}catch(\ValueError|\TypeError|\Exception $e){
+			throw new Exception\IOException("Token file '{$this->filePath}' is corrupted.", previous: $e);
+		}
 	}
 
 	/**
