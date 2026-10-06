@@ -7,7 +7,7 @@
 
 A simple and modern PHP library for communicating with the [Revolut Business API](https://developer.revolut.com/docs/api/business).
 
-Covers all 98 endpoints of the Merchant API v1.0 and the Webhooks API v2.0, with typed DTOs, enums and full PHPStan level max coverage.
+Covers all 98 endpoints of the Business API v1.0 and the Webhooks API v2.0, with typed DTOs, enums and full PHPStan level max coverage.
 
 ## 🚀 Installation
 
@@ -388,7 +388,7 @@ The client throws exceptions to help you identify the issue:
 
 - `Znojil\RevolutBusiness\Exception\ClientException`: For HTTP client-side errors (4xx).
 - `Znojil\RevolutBusiness\Exception\ServerException`: For HTTP server-side errors (5xx).
-- `Znojil\RevolutBusiness\Exception\ResponseException`: For other unsuccessful HTTP responses. The base class of the three above and of `UnexpectedResponseException` — it carries `apiErrorCode`, `apiErrorId` and the raw `responseBody`.
+- `Znojil\RevolutBusiness\Exception\ResponseException`: For other unsuccessful HTTP responses. It is the base class of all exceptions that carry an API response, so they all provide `apiErrorCode`, `apiErrorId` and the raw `responseBody`.
 - `Znojil\RevolutBusiness\Exception\JsonException`: When a response body is not valid JSON.
 - `Znojil\RevolutBusiness\Exception\JsonResponseException`: When a response body is valid JSON but not the object or array the endpoint promises (subtype of `UnexpectedResponseException`).
 - `Znojil\RevolutBusiness\Exception\UnexpectedResponseException`: When a successful response body does not match the expected shape (e.g. an unknown enum value, a missing or mistyped field). The original error is available as `getPrevious()`.
