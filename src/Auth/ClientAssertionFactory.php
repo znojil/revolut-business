@@ -47,14 +47,18 @@ final class ClientAssertionFactory{
 	private function sign(string $data): string{
 		$key = openssl_pkey_get_private($this->config->privateKey);
 		if($key === false){
-			throw new Exception\ClientAssertionException("Private key is not valid: " . (openssl_error_string() ?: 'unknown error'));
+			throw new Exception\ClientAssertionException('Private key is not valid: ' . $this->getOpensslError());
 		}
 
 		if(!openssl_sign($data, $signature, $key, OPENSSL_ALGO_SHA256) || !is_string($signature)){
-			throw new Exception\ClientAssertionException("Signing failed: " . (openssl_error_string() ?: 'unknown error'));
+			throw new Exception\ClientAssertionException('Signing failed: ' . $this->getOpensslError());
 		}
 
 		return $signature;
+	}
+
+	private function getOpensslError(): string{
+		return ($error = openssl_error_string()) !== false ? $error : 'unknown error';
 	}
 
 	private function base64UrlEncode(string $data): string{
